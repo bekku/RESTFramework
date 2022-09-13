@@ -107,16 +107,13 @@ path('api/', include(router.urls))を追加する。
 Registerされた、名称でPOST画面がひらけて、投稿を行える。
 
 
-①
-pip install djangorestframework
+# ① pip install djangorestframework
 
-②
+# ②setting.py
 INSTALLED_APPS = [
     'rest_framework',
 ]
-③
-アプリディレクトリ下でserializers.pyを作成
-# serializers.py
+# ③ アプリディレクトリ下でserializers.pyを作成
 from rest_framework import serializers
 from .models import Template
 
@@ -125,8 +122,7 @@ class TemplateSerializer(serializers.ModelSerializer):
         model = Template
         fields = ('template_name', 'category',)
 
-④
-models.pyに下記をコピペ
+# ④ models.pyに下記をコピペ
 from django.db import models
 class Tempcategory(models.Model):
     name = models.CharField('カテゴリー', max_length=50)
@@ -141,8 +137,7 @@ class Template(models.Model):
         return self.template_name
 
 
-⑤
-view.pyにて
+# ⑤ view.pyにて
 from django.shortcuts import render 
 from rest_framework import viewsets, filters
 from .models import Template
@@ -156,7 +151,7 @@ def index(request):
     return render(request, ‘アプリ名/index.html')
 
 
-⑥
+# ⑥urls.py
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
@@ -174,7 +169,7 @@ urlpatterns = [
 ]
 
 
-→ seiarlizedを用いない場合
+# → seiarlizedを用いない場合
 view.py
 from django.contrib import admin
 from django.urls import path, include
