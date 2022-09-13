@@ -1,33 +1,45 @@
 # RESTFrameworkの雛形
 
-mkdir プロジェクト名
+	mkdir プロジェクト名
 
-pyenv local 3.8.0
 
-python3 -m venv 環境_venv 
+	pyenv local 3.8.0
 
-source 環境_venv/bin/activate
 
-pip install --upgrade pip 
+	python3 -m venv 環境_venv 
 
-pip install Django
 
-django-admin startproject プロ
+	source 環境_venv/bin/activate
+
+
+	pip install --upgrade pip 
+
+
+	pip install Django
+
+
+	django-admin startproject プロ
 
 
 ### setting.py更新
-LANGUAGE_CODE = 'ja'
-TIME_ZONE = 'Asia/Tokyo' 
+
+	LANGUAGE_CODE = 'ja'
+	TIME_ZONE = 'Asia/Tokyo' 
+
 
 	python manage.py startapp アプ
+
 
 	settings.py INSTALLED_APPS に追加
 
 (/アプリディレクトリ/templates/アプリ名ディレクトリ/index.html　作成)
+
 	mkdir templates
 	cd templates
 	mkdir アプリ名
 	touch index.html 
+	
+	
 	<!DOCTYPE html>
 	<html>
 	  <head>
@@ -38,12 +50,13 @@ TIME_ZONE = 'Asia/Tokyo'
 	</html>
 
 View.py設定
-	from django.shortcuts import render 
 
+	from django.shortcuts import render 
 	def index(request):
 		return render(request, 'アプリ/index.html')
 
 (プロジェクトurls.py設定)
+
 	from django.contrib import admin
 	from django.urls import path, include
 
@@ -53,20 +66,22 @@ View.py設定
 	]
 
 アプリディレクトリ内でurls.py設定
+
 	touch urls.py
+	
+	
 	from django.urls import path
 	from . import views
 	app_name = "アプリ名"
 	urlpatterns = [
 		path('', views.index, name='index'),
-
 	]
 	
 	python manage.py makemigrations アプリ名
 	python manage.py migrate
 	python manage.py runserver
-
 	python manage.py createsuperuser
+	
 (Adminページの作成)
 
 ## postgresql
@@ -167,7 +182,7 @@ Registerされた、名称でPOST画面がひらけて、投稿を行える。
 	from rest_framework import routers
 	from .views import TemplateViewSet
 	from . import views
-
+	
 	router = routers.DefaultRouter()
 	router.register('template', views.TemplateViewSet)
 
@@ -205,9 +220,11 @@ view.py
 
 
 アプリurls.py
+
 	urlpatterns = [
 	    path('nonseializers_api/', views.NonSeializers_Api.as_view(), name = "NonSeializers_Api"),
 	]
-
+	
+	
 	python manage.py makemigrations アプリ名
 	python manage.py migrate
