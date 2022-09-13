@@ -84,6 +84,30 @@ View.py設定
 	
 (Adminページの作成)
 
+## manage.pyと同じ階層に、.gitignoreを作成
+
+	*.log
+	*.pyc
+	__pycache__/
+	db-volumes/
+	db.sqlite3
+	.env
+
+## manage.pyと同じ階層に、.envを作成
+
+	pip install django-environ
+	SECRET_KEY = ''
+	DEBUG = True
+
+## .envをsetting.pyに導入
+
+	import environ
+	import os
+	env = environ.Env()
+	env.read_env('.env')
+	SECRET_KEY = env('SECRET_KEY')
+	DEBUG = env('DEBUG')
+
 ## postgresql
 (brew install postgresql)
 
