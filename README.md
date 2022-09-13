@@ -23,7 +23,7 @@ touch index.html
 <!DOCTYPE html>
 <html>
   <head>
-    <h1>ブログサイト</h1> <p>ここはトップページです。</p> 
+	  ここはトップページです。
   </head>
   <body>
   </body>
