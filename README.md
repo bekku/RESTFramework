@@ -96,8 +96,8 @@ View.py設定
 ## manage.pyと同じ階層に、.envを作成
 
 	pip install django-environ
-	SECRET_KEY = ''
-	DEBUG = True
+	SECRET_KEY=''
+	DEBUG=True
 
 ## .envをsetting.pyに導入
 
@@ -229,7 +229,6 @@ view.py
 	from rest_framework.response import Response
 	from rest_framework.decorators import api_view
 	from rest_framework import status
-	from .models import Template
 
 	class NonSeializers_Api(APIView):
 	    def get(self, request):
