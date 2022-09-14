@@ -130,12 +130,12 @@ setting.py データベース変更
 
 	DATABASES = {
 	    'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2', #sqlite3から変更
-		'NAME': ‘’上記で作成したデータベース名,
-		'USER': os.environ.get('DB_USER'),
-		'PASSWORD': os.environ.get('DB_PASSWORD'),
-		'HOST': 'localhost',
-		'PORT': '',
+		'ENGINE': 'django.db.backends.postgresql',
+		'NAME': 'testDB',
+		'USER': 'hogehoge',
+		'PASSWORD': 'password',
+		'HOST': 'db',
+		'PORT': 5432,
 	    }
 	}
 
