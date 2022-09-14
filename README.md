@@ -127,17 +127,28 @@ https://codenote.net/mac/homebrew/3894.html
 
 setting.py データベース変更
 	import os 
-
+	
 	DATABASES = {
 	    'default': {
-		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': 'testDB',
-		'USER': 'hogehoge',
-		'PASSWORD': 'password',
-		'HOST': 'db',
-		'PORT': 5432,
+		'ENGINE': 'django.db.backends.postgresql_psycopg2', #sqlite3から変更
+		'NAME': 'testDB', 
+		'USER': os.environ.get('DB_USER'),
+		'PASSWORD': os.environ.get('DB_PASSWORD'),
+		'HOST': 'localhost',
+		'PORT': '',
 	    }
 	}
+	
+	#DATABASES = {
+	#    'default': {
+	#	'ENGINE': 'django.db.backends.postgresql',
+	#	'NAME': 'testDB',
+	#	'USER': 'hogehoge',
+	#	'PASSWORD': 'password',
+	#	'HOST': 'db',
+	#	'PORT': 5432,
+	#   }
+	#}
 
 ⭐️python manage.py migrate (データベース作成)
 
